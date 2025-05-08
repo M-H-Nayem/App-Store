@@ -60,8 +60,7 @@ const provider = new GoogleAuthProvider();
     setLoading,
     loading,
     googleLogin,
-    // setUserInfo,
-    // userInfo
+ 
   };
 
   return <AuthContext value={All}>{children} </AuthContext>;

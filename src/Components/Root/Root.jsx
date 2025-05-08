@@ -8,6 +8,7 @@ import GameApp from "../GameApp";
 import ProductivityApp from "../ProductivityApp";
 import PopularApp from "../PopularApp";
 import { useLoaderData } from "react-router";
+import AppSlider from "../AppSlider";
 
 const Root = () => {
   let datas = useLoaderData()
@@ -16,13 +17,14 @@ const Root = () => {
 
   return (
     <div>
+      <AppSlider></AppSlider>
       <Banner></Banner>
       <RecomendedApp datas={datas}></RecomendedApp>
       <PopularApp datas={datas}></PopularApp>
-      {/* <ProductivityApp datas={datas}></ProductivityApp>
+      <ProductivityApp datas={datas}></ProductivityApp>
       <EducationApp datas={datas}></EducationApp>
       <HealthApp datas={datas}></HealthApp>
-      <GameApp datas={datas}></GameApp> */}
+      <GameApp datas={datas}></GameApp>
     </div>
   );
 };
