@@ -4,7 +4,7 @@ const Banner = () => {
   return (
     <div className="bg-gray-200 px-[10%] py-10 ">
       <div className="hero  bg-white rounded-2xl ">
-        <div className="hero-content flex-col lg:flex-row-reverse p-0">
+        <div className="hero-content flex-col lg:flex-row-reverse p-5">
           <img src="S.png" className="max-w-sm rounded-lg " />
           <div>
             <h1 className="text-5xl font-bold mb-3">

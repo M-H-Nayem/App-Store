@@ -4,10 +4,9 @@ import { AuthContext } from "../AuthProvider";
 
 const Register = () => {
   let navigate = useNavigate();
-  let { createUser, setUser, googleLogin, setUserInfo } = use(AuthContext);
+  let { createUser, setUser, googleLogin } = use(AuthContext);
 
   let [nameError, setNameError] = useState("");
-  // let [emailError, setEmailError] = useState("");
   let [passwordError, setPasswordError] = useState("");
 
   let handleRegister = (e) => {
@@ -16,11 +15,7 @@ const Register = () => {
     let url = e.target.url.value;
     let email = e.target.email.value;
     let password = e.target.password.value;
-    // setUserInfo({
-    //   name,
-    //   url,
-    //   email,
-    // });
+   
 
     console.log(url);
     if (name.length < 5) {

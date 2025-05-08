@@ -34,7 +34,8 @@ let router = createBrowserRouter([
       {
         path: "/cardDetails/:id",
         element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
-        loader: ()=>fetch("/AppData.json") ,
+        loader: () => fetch("/AppData.json"),
+        hydrateFallbackElement:<div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-xl"></span></div>
       },
       {
         path: "/popular",
