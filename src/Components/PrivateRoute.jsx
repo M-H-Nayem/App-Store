@@ -8,7 +8,6 @@ const PrivateRoute = ({ children }) => {
     
 
     let location = useLocation()
-    console.log(location);
     if (loading) {
     return <div className='flex justify-center items-center w-full h-screen'><span className="loading loading-spinner loading-xl"></span></div>
 }

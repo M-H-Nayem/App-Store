@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { Link, useLoaderData, useNavigate, useParams } from "react-router";
 import { AuthContext } from "../AuthProvider";
 import { FaDownload, FaStar, FaUserCircle } from "react-icons/fa";
+import { toast, ToastContainer } from "react-toastify";
 
 const CardDetails = () => {
   let navigate = useNavigate();
@@ -31,11 +32,15 @@ const CardDetails = () => {
     e.preventDefault();
     let comment = e.target.comment.value;
     let rating = e.target.rating.value;
+    if (comment.length < 10) {
+      alert("Provide a comment containing at least 10 charecter")
+      toast("Provide a comment containing at least 10 charecter")
+    }
     if (rating < 0) {
-      alert("Provide a positive rating value");
+      toast("Provide a positive rating value");
       return;
     } else if (rating > 5) {
-      alert("Provide a Value between 0 to 5");
+      toast("Provide a Value between 0 to 5");
       return;
     } else {
       setReview([
@@ -46,6 +51,7 @@ const CardDetails = () => {
       ]);
     }
     setComment(false);
+    
   };
 
   let handleHome = () => {
@@ -60,7 +66,7 @@ const CardDetails = () => {
       <div className="grid grid-cols-5 items-center justify-center gap-5">
         <div className="w-5/12 mx-auto rounded-4xl col-span-5  bg-gray-200 my-10 shadow-2xl shadow-black relative">
           <img
-            className="w-full h-[350px] rounded-t-2xl  mx-auto opacity-30"
+            className="w-full h-[350px] rounded-t-2xl  mx-auto opacity-40"
             src={card.thumbnail}
             alt=""
           />
@@ -79,32 +85,32 @@ const CardDetails = () => {
                   Developed By - {card?.developer}
                 </h1>
               </div>
-              <p className="text-black flex gap-3 items-center">
+              <span className="text-black flex gap-3 items-center">
                 <FaDownload size={30} fill="blue" />
                 <p className="text-[18px] font-semibold">{card.downloads}</p>
-              </p>
+              </span>
             </div>
             <p className="text-[18px] mt-2"> {card.description}</p>
 
             <div className="mt-3">
               <p className="text-xl ">Features -</p>
 
-              <ul>
-                <li className="flex gap-3">
-                  {" "}
+             
+                <ol className="">
+                
                   {card.features?.map((feature, index) => (
-                    <p className="flex gap-3" key={index}>
+                    <li className="flex gap-3" key={index}>
                       {feature}
-                    </p>
+                    </li>
                   ))}
-                </li>
-              </ul>
+                </ol>
+             
             </div>
 
             <div className="flex justify-between">
               <button
                 onClick={()=>handleHome()}
-                className="btn mt-5 border-none px-5 rounded-xl bg-blue-500 text-white text-xl"
+                className="btn mt-5 border-none px-5 rounded-xl bg-orange-300 text-white text-xl"
               >
                 Back to Home
               </button>
@@ -144,6 +150,7 @@ const CardDetails = () => {
                   >
                     Submit
                   </button>
+                  <ToastContainer />
                 </form>
               ) : (
                 ""

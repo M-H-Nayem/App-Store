@@ -118,9 +118,9 @@ const Navbar = () => {
           <div className="flex items-center gap-3">
           {/* {user?.email} */}
             <>
-              <button title={user?.email}  className="btn bg-blue-500 border-none rounded-xl w-fit text-white px-3 ">
+              <Link to="/myprofile"><button title={user?.email}  className="btn bg-blue-500 border-none rounded-xl w-fit text-white px-3 ">
                 My Profile <FaUserCircle size={30} fill="gold" />
-              </button>
+              </button></Link>
             </>
             <Link to="/login">
               <button

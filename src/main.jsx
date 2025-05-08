@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router";
 import Home from "./Components/Home/Home.jsx";
@@ -18,6 +17,7 @@ import LogIn from "./Components/LogIn.jsx";
 import Register from "./Components/Register.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
 import ErrorPage from "./Components/ErrorPage.jsx";
+import MyProfile from "./Components/MyProfile.jsx";
 
 let router = createBrowserRouter([
   {
@@ -73,6 +73,10 @@ let router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/myprofile",
+        element: <MyProfile></MyProfile>,
       },
     ],
   },
