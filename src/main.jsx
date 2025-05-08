@@ -17,25 +17,24 @@ import PopularApp from "./Components/PopularApp.jsx";
 import LogIn from "./Components/LogIn.jsx";
 import Register from "./Components/Register.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 
 let router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
-    errorElement: (
-      <>
-        <h1>Error</h1>
-      </>
-    ),
+    errorElement: <ErrorPage></ErrorPage>,
+    // errorElement: <p>error</p>,
     children: [
       {
         index: true,
-        // element: <Home></Home> ,
         element: <Root></Root>,
+        loader: ()=>fetch("/AppData.json") ,
       },
       {
         path: "/cardDetails/:id",
         element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
+        loader: ()=>fetch("/AppData.json") ,
       },
       {
         path: "/popular",
@@ -76,15 +75,6 @@ let router = createBrowserRouter([
         element: <Register></Register>,
       },
     ],
-  },
-
-  {
-    path: "/auth",
-    element: (
-      <>
-        <h1>auth</h1>
-      </>
-    ),
   },
 ]);
 

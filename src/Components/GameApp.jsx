@@ -24,7 +24,7 @@ const GameApp = () => {
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 justify-center items-center w-fit mx-auto">
           {data.map((dt) => (
             <div key={dt.id}>
-              <div className="card bg-ima w-96 shadow-lg rounded-2xl ">
+              <div className="card bg-ima w-96 shadow-2xl rounded-2xl ">
                 <figure>
                   <img
                     className="w-[420px] h-[250px] p-3 rounded-3xl"

@@ -1,19 +1,37 @@
-import React, { use } from "react";
-import { Link, Links, useNavigate } from "react-router";
+import React, { use, useState } from "react";
+import { Link, Links, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../AuthProvider";
 
 const LogIn = () => {
-    let { logIn } = use(AuthContext);
-    let navigate= useNavigate()
+  let [error , setError]= useState("")
+  let { logIn } = use(AuthContext);
+  let navigate = useNavigate();
+  let location = useLocation();
+  console.log(location);
 
   let handleLogin = (e) => {
     e.preventDefault();
     let email = e.target.email.value;
     let password = e.target.password.value;
-
+    setError("")
     //   console.log(email, password);
-      logIn(email, password);
-      navigate("/")
+    logIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        navigate(`${location.state?location.state:"/"}`)
+      
+      })
+      
+      .catch((error) => {
+        console.log(error);
+        // const errorCode = error.code;
+    // const errorMessage = error.message;
+        // alert("wrong pass")
+        // setError(errorCode)
+        setError("Invalid Email or Password")
+      });
+
+   
   };
   return (
     <>
@@ -27,6 +45,7 @@ const LogIn = () => {
               type="email"
               className="input bg-gray-100 px-3"
               placeholder="Email"
+              required
             />
             <label className="label text-xl">Password</label>
             <input
@@ -34,10 +53,14 @@ const LogIn = () => {
               type="password"
               className="input  bg-gray-100 px-3"
               placeholder="Password"
+              required
             />
-            <div>
-              <Link>Forgot password?</Link>
+            <div className="hover:underline">
+              <Link >Forgot password?</Link>
             </div>
+            {
+              error && <p className="text-red-700">{ error}</p>
+            }
             <button
               type="submit"
               className="btn text-xl bg-gray-100 mt-2 border-none "

@@ -7,19 +7,22 @@ import HealthApp from "../HealthApp";
 import GameApp from "../GameApp";
 import ProductivityApp from "../ProductivityApp";
 import PopularApp from "../PopularApp";
+import { useLoaderData } from "react-router";
 
 const Root = () => {
+  let datas = useLoaderData()
   //   let { dataPromise } = use(AuthContext);
   //   let datas = use(dataPromise);
 
   return (
     <div>
-      <RecomendedApp></RecomendedApp>
-      <PopularApp></PopularApp>
-      <ProductivityApp></ProductivityApp>
-      <EducationApp></EducationApp>
-      <HealthApp></HealthApp>
-      <GameApp></GameApp>
+      <Banner></Banner>
+      <RecomendedApp datas={datas}></RecomendedApp>
+      <PopularApp datas={datas}></PopularApp>
+      {/* <ProductivityApp datas={datas}></ProductivityApp>
+      <EducationApp datas={datas}></EducationApp>
+      <HealthApp datas={datas}></HealthApp>
+      <GameApp datas={datas}></GameApp> */}
     </div>
   );
 };
