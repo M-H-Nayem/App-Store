@@ -7,12 +7,7 @@ function App() {
   return (
     <>
       
-    <Navbar></Navbar>
-
-      {/* <Navbar></Navbar> */}
-      <div className="text-4xl">ghfdhjgajhdsf</div>
-
-    <Footer></Footer>
+  
     
       
     </>
